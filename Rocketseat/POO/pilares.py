@@ -55,3 +55,32 @@ conta.depositar(valor = 500)
 print(f"Saldo da conta bancaria: {conta.consultar()}")
 conta.sacar(valor = 500)
 print(f"Saldo da conta bancaria: {conta.consultar()}")
+
+
+print("\nExemplo de abstracao:")
+from abc import ABC, abstractmethod
+
+class Veiculo(ABC):
+
+    @abstractmethod
+    def ligar(self):
+        pass
+
+    @abstractmethod
+    def desligar(self):
+        pass
+
+class Carro(Veiculo):
+
+    def __init__(self) -> None:
+        pass
+
+    def ligar(self):
+        return "Carro ligado usuando a chave"
+
+    def desligar(self):
+        return "Carro desligando usando a chave"
+
+carro_amarelo = Carro()
+print(carro_amarelo.ligar())
+print(carro_amarelo.desligar())
