@@ -30,7 +30,7 @@ def get_task():
     return jsonify(output)
 
 
-@app.route('/tasks/<int:id>', methods=['GET'])
+@app.route('/tasks/<int:id>',  methods=['GET'])
 def get_tasks(id):
     for t in tasks:
         if t.id == id:
@@ -39,6 +39,27 @@ def get_tasks(id):
     return jsonify({"message": "Não foi possível encontrar a atividade"}), 400
 
 
+@app.route('/tasks/<int:id>', methods=['PUT'])
+def update_tak(id):
+    
+    task = None
+    for t in tasks:
+        if t.id == id:
+            task = t
+
+    print(task)
+
+    if task == None:
+        return jsonify({"message": "Não for possível encontrar a atividade"}), 400
+
+    data = request.get_json()
+    task.title = data['title']
+    task.description = data['description']
+    task.completed = data['completed']
+
+    print(task)
+
+    return jsonify({"message": "tarefa atualizada com sucesso"})
 
 if __name__ == "__main__":
     app.run(debug=True)
