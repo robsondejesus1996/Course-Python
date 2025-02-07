@@ -59,3 +59,32 @@ print(f"Saldo da conta bancária: {conta.consultar_saldo()}")
 
 
 conta_do_zezinho = ContaBancaria(saldo=50)
+
+
+print("\nExemplo de abstração: ")
+from abc import ABC, abstractmethod
+
+class Veiculo(ABC):
+
+    @abstractmethod
+    def ligar(self):
+        pass
+
+    @abstractmethod
+    def desligar(self):
+        pass
+
+class Carro(Veiculo):
+    def __init__(self) -> None:
+        pass
+
+    def ligar(self):
+        return "Carro ligado usuando a chave"
+
+    def desligar(self):
+        return "Carro desligado usuando a chave"
+
+
+carro_amaerelo = Carro()
+print(carro_amaerelo.ligar())
+print(carro_amaerelo.desligar())
