@@ -35,7 +35,7 @@ def get_task(id):
     for t in tasks:
         if t.id == id:
             return jsonify(t.to_dict())
-    return jsonify({"mensagem": "Não foi possivel encontrar a atividade!"}), 400
+    return jsonify({"message": "Não foi possivel encontrar a atividade!"}), 404
 
 
 @app.route('/tasks/<int:id>', methods=['PUT'])
